@@ -1,10 +1,11 @@
-import React, { Component, useEffect, useState } from "react";
-import { FaRegTrashAlt } from "react-icons/fa";
+import React, { Component } from "react";
+
 import { FaEdit } from "react-icons/fa";
-import Table from "react-bootstrap/Table";
+import { FaRegTrashAlt } from "react-icons/fa";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import Table from "react-bootstrap/Table";
 
 class ViewRecords extends Component {
   styles = {
@@ -31,15 +32,15 @@ class ViewRecords extends Component {
     this.setState({ data_index: index });
   };
 
-  handleOnSubmitUpdate = (e) => {
-    e.preventDefault();
+  handleOnSubmitUpdate = (event) => {
+    event.preventDefault();
     this.props.onUpdate({
-      id: e.target.employee_id.value,
-      Name: e.target.name.value,
-      Surname: e.target.surname.value,
-      Email: e.target.email.value,
-      Phone: e.target.phone.value,
-      Salary: e.target.salary.value,
+      id: event.target.employee_id.value,
+      name: event.target.name.value,
+      surname: event.target.surname.value,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      salary: event.target.salary.value,
     });
 
     this.setState({ isOpen: false });
@@ -62,11 +63,11 @@ class ViewRecords extends Component {
           <tbody>
             {this.props.data.map((employee) => (
               <tr>
-                <td key={employee.Name}>{employee.Name}</td>
-                <td key={employee.Surname}>{employee.Surname}</td>
-                <td key={employee.Email}>{employee.Email}</td>
-                <td key={employee.Phone}>{employee.Phone}</td>
-                <td key={employee.Salary}>{employee.Salary}</td>
+                <td key={employee.name}>{employee.name}</td>
+                <td key={employee.surname}>{employee.surname}</td>
+                <td key={employee.email}>{employee.email}</td>
+                <td key={employee.phone}>{employee.phone}</td>
+                <td key={employee.salary}>{employee.salary}</td>
                 <td>
                   <button
                     onClick={() => this.props.onDelete(employee.id)}
@@ -98,44 +99,44 @@ class ViewRecords extends Component {
                 defaultValue={this.props.data[this.state.data_index].id}
               />
               <h3>Edit Employee Records</h3>
-              <Form.Group className="mt-4 mb-3" controlId="formBasicEmail">
+              <Form.Group className="mt-4 mb-3">
                 <Form.Control
                   type="text"
                   placeholder="Enter name"
                   name="name"
-                  defaultValue={this.props.data[this.state.data_index].Name}
+                  defaultValue={this.props.data[this.state.data_index].name}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="text"
                   placeholder="Enter Surname"
                   name="surname"
-                  defaultValue={this.props.data[this.state.data_index].Surname}
+                  defaultValue={this.props.data[this.state.data_index].surname}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="email"
                   placeholder="Enter Email"
                   name="email"
-                  defaultValue={this.props.data[this.state.data_index].Email}
+                  defaultValue={this.props.data[this.state.data_index].email}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="number"
                   placeholder="Enter Phone"
                   name="phone"
-                  defaultValue={this.props.data[this.state.data_index].Phone}
+                  defaultValue={this.props.data[this.state.data_index].phone}
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="number"
                   placeholder="Enter Salary"
                   name="salary"
-                  defaultValue={this.props.data[this.state.data_index].Salary}
+                  defaultValue={this.props.data[this.state.data_index].salary}
                 />
               </Form.Group>
 

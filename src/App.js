@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 /*Components*/
 import Add from "./components/add";
-import NavBar from './components/navbar';
-import Records from './records.json';
+import NavBar from "./components/navbar";
+import Records from "./records.json";
 import Search from "./components/search";
-import ViewRecord from './components/viewRecord';
+import ViewRecord from "./components/viewRecord";
 
-import './App.css';
+import "./App.css";
 
 class App extends Component {
 
@@ -15,43 +15,39 @@ class App extends Component {
     super(props);
 
     this.state = {
-      employess: Records
+      employees: Records
     }
   }
 
-
-  onAdd = (obj) => {
+  onAdd = (employee_new_data) => {
     this.setState(prevState => ({
-      employess: [...prevState.employess, obj]
+      employees: [...prevState.employees, employee_new_data]
     }))
   };
 
   onUpdate = (employee_data) => {
-    let employess = [...this.state.employess];
-    employess.map(employee_item => {
+    let employees = [...this.state.employees];
+    employees.map(employee_item => {
       if (parseInt(employee_item.id) === parseInt(employee_data.id)) {
-        employee_item.Name = employee_data.Name;
-        employee_item.Surname = employee_data.Surname;
-        employee_item.Email = employee_data.Email;
-        employee_item.Phone = employee_data.Phone;
-        employee_item.Salary = employee_data.Salary;
+        employee_item.name = employee_data.name;
+        employee_item.surname = employee_data.surname;
+        employee_item.email = employee_data.email;
+        employee_item.phone = employee_data.phone;
+        employee_item.salary = employee_data.salary;
       };
 
     });
-
-    console.log(employess);
-
-    this.setState({ employess });
+    this.setState({ employees });
   };
 
-  onDelete = (id) => {
-    const employess = this.state.employess.filter((c) => c.id !== id);
-    this.setState({ employess });
+  onDelete = (fetched_employee_id) => {
+    const employees = this.state.employees.filter((employee) => employee.id !== fetched_employee_id);
+    this.setState({ employees });
   };
 
   render() {
-    console.log(this.state.employess);
-    let { employess } = this.state;
+    console.log(this.state.employees);
+    let { employees } = this.state;
     return (
       <React.Fragment>
         <NavBar />
@@ -59,10 +55,10 @@ class App extends Component {
           <h2 className="text-center mt-5 mb-5">View Record</h2>
           <div className="d-flex justify-content-between mt-5">
             <Search />
-            <Add onAdd={this.onAdd} employee_id={employess.length} />
+            <Add onAdd={this.onAdd} employee_id={employees.length} />
           </div>
           <ViewRecord
-            data={employess}
+            data={employees}
             onDelete={this.onDelete}
             onUpdate={this.onUpdate}
           />

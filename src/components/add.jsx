@@ -1,7 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
+
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
 class Add extends Component {
   state = {
@@ -12,21 +13,22 @@ class Add extends Component {
 
   closeModal = () => this.setState({ isOpen: false });
 
-  handleOnSubmit = (e) => {
-    e.preventDefault();
+  handleOnSubmit = (event) => {
+    event.preventDefault();
     this.props.onAdd({
       id: this.props.employee_id + 1,
-      Name: e.target.name.value,
-      Surname: e.target.surname.value,
-      Email: e.target.email.value,
-      Phone: e.target.phone.value,
-      Salary: e.target.salary.value,
+      name: event.target.name.value,
+      surname: event.target.surname.value,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      salary: event.target.salary.value,
     });
-    e.target.name.value = "";
-    e.target.surname.value = "";
-    e.target.email.value = "";
-    e.target.phone.value = "";
-    e.target.salary.value = "";
+    event.target.name.value = "";
+    event.target.surname.value = "";
+    event.target.email.value = "";
+    event.target.phone.value = "";
+    event.target.salary.value = "";
+    this.setState({ isOpen: false });
   };
 
   render() {
@@ -41,7 +43,7 @@ class Add extends Component {
           <Modal.Body>
             <Form className="p-2 text-center" onSubmit={this.handleOnSubmit}>
               <h3>Insert Employee Records</h3>
-              <Form.Group className="mt-4 mb-3" controlId="formBasicEmail">
+              <Form.Group className="mt-4 mb-3">
                 <Form.Control
                   type="text"
                   placeholder="Enter name"
@@ -49,7 +51,7 @@ class Add extends Component {
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="text"
                   placeholder="Enter Surname"
@@ -57,7 +59,7 @@ class Add extends Component {
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="email"
                   placeholder="Enter Email"
@@ -65,7 +67,7 @@ class Add extends Component {
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="number"
                   placeholder="Enter Phone"
@@ -73,7 +75,7 @@ class Add extends Component {
                   required
                 />
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Group className="mb-3">
                 <Form.Control
                   type="number"
                   placeholder="Enter Salary"

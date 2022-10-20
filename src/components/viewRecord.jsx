@@ -21,9 +21,12 @@ class ViewRecords extends Component {
 
   closeModal = () => this.setState({ isOpen: false });
 
-  openModal = (id) => {
+  openModal = (employee_id) => {
     this.setState({ isOpen: true });
-    this.setState({ data_index: id - 1 });
+    const index = this.props.data
+      .map((object) => object.id)
+      .indexOf(employee_id);
+    this.setState({ data_index: index });
   };
 
   render() {
@@ -69,7 +72,10 @@ class ViewRecords extends Component {
 
         <Modal show={this.state.isOpen} onHide={this.closeModal}>
           <Modal.Body>
-            <Form className="p-2 text-center" onSubmit={this.handleOnSubmit}>
+            <Form
+              className="p-2 text-center"
+              onSubmit={this.handleOnSubmitUpdate}
+            >
               <h3>Edit Employee Records</h3>
               <Form.Group className="mt-4 mb-3" controlId="formBasicEmail">
                 <Form.Control

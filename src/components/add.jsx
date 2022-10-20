@@ -9,6 +9,7 @@ class Add extends Component {
   };
 
   openModal = () => this.setState({ isOpen: true });
+
   closeModal = () => this.setState({ isOpen: false });
 
   handleOnSubmit = (e) => {
@@ -45,6 +46,7 @@ class Add extends Component {
                   type="text"
                   placeholder="Enter name"
                   name="name"
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -52,6 +54,7 @@ class Add extends Component {
                   type="text"
                   placeholder="Enter Surname"
                   name="surname"
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -59,6 +62,7 @@ class Add extends Component {
                   type="email"
                   placeholder="Enter Email"
                   name="email"
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -66,6 +70,7 @@ class Add extends Component {
                   type="number"
                   placeholder="Enter Phone"
                   name="phone"
+                  required
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -73,9 +78,9 @@ class Add extends Component {
                   type="number"
                   placeholder="Enter Salary"
                   name="salary"
+                  required
                 />
               </Form.Group>
-
               <Button variant="primary" type="submit">
                 Insert Record
               </Button>

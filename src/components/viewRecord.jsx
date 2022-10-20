@@ -23,10 +23,26 @@ class ViewRecords extends Component {
 
   openModal = (employee_id) => {
     this.setState({ isOpen: true });
+
     const index = this.props.data
       .map((object) => object.id)
       .indexOf(employee_id);
+
     this.setState({ data_index: index });
+  };
+
+  handleOnSubmitUpdate = (e) => {
+    e.preventDefault();
+    this.props.onUpdate({
+      id: e.target.employee_id.value,
+      Name: e.target.name.value,
+      Surname: e.target.surname.value,
+      Email: e.target.email.value,
+      Phone: e.target.phone.value,
+      Salary: e.target.salary.value,
+    });
+
+    this.setState({ isOpen: false });
   };
 
   render() {
@@ -76,13 +92,18 @@ class ViewRecords extends Component {
               className="p-2 text-center"
               onSubmit={this.handleOnSubmitUpdate}
             >
+              <Form.Control
+                type="hidden"
+                name="employee_id"
+                defaultValue={this.props.data[this.state.data_index].id}
+              />
               <h3>Edit Employee Records</h3>
               <Form.Group className="mt-4 mb-3" controlId="formBasicEmail">
                 <Form.Control
                   type="text"
                   placeholder="Enter name"
                   name="name"
-                  value={this.props.data[this.state.data_index].Name}
+                  defaultValue={this.props.data[this.state.data_index].Name}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -90,7 +111,7 @@ class ViewRecords extends Component {
                   type="text"
                   placeholder="Enter Surname"
                   name="surname"
-                  value={this.props.data[this.state.data_index].Surname}
+                  defaultValue={this.props.data[this.state.data_index].Surname}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -98,7 +119,7 @@ class ViewRecords extends Component {
                   type="email"
                   placeholder="Enter Email"
                   name="email"
-                  value={this.props.data[this.state.data_index].Email}
+                  defaultValue={this.props.data[this.state.data_index].Email}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -106,7 +127,7 @@ class ViewRecords extends Component {
                   type="number"
                   placeholder="Enter Phone"
                   name="phone"
-                  value={this.props.data[this.state.data_index].Phone}
+                  defaultValue={this.props.data[this.state.data_index].Phone}
                 />
               </Form.Group>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -114,7 +135,7 @@ class ViewRecords extends Component {
                   type="number"
                   placeholder="Enter Salary"
                   name="salary"
-                  value={this.props.data[this.state.data_index].Salary}
+                  defaultValue={this.props.data[this.state.data_index].Salary}
                 />
               </Form.Group>
 

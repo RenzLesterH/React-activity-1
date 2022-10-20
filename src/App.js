@@ -46,7 +46,7 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.employees);
+    // console.log(this.state.employees);
     let { employees } = this.state;
     return (
       <React.Fragment>

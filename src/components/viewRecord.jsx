@@ -47,6 +47,7 @@ class ViewRecords extends Component {
   };
 
   render() {
+    let { data } = this.props;
     return (
       <React.Fragment>
         <Table striped bordered hover className="text-center mt-3">
@@ -96,7 +97,7 @@ class ViewRecords extends Component {
               <Form.Control
                 type="hidden"
                 name="employee_id"
-                defaultValue={this.props.data[this.state.data_index].id}
+                defaultValue={data[this.state.data_index].id}
               />
               <h3>Edit Employee Records</h3>
               <Form.Group className="mt-4 mb-3">
@@ -104,7 +105,7 @@ class ViewRecords extends Component {
                   type="text"
                   placeholder="Enter name"
                   name="name"
-                  defaultValue={this.props.data[this.state.data_index].name}
+                  defaultValue={data[this.state.data_index].name}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -112,7 +113,7 @@ class ViewRecords extends Component {
                   type="text"
                   placeholder="Enter Surname"
                   name="surname"
-                  defaultValue={this.props.data[this.state.data_index].surname}
+                  defaultValue={data[this.state.data_index].surname}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -120,7 +121,7 @@ class ViewRecords extends Component {
                   type="email"
                   placeholder="Enter Email"
                   name="email"
-                  defaultValue={this.props.data[this.state.data_index].email}
+                  defaultValue={data[this.state.data_index].email}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -128,7 +129,7 @@ class ViewRecords extends Component {
                   type="number"
                   placeholder="Enter Phone"
                   name="phone"
-                  defaultValue={this.props.data[this.state.data_index].phone}
+                  defaultValue={data[this.state.data_index].phone}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -136,7 +137,7 @@ class ViewRecords extends Component {
                   type="number"
                   placeholder="Enter Salary"
                   name="salary"
-                  defaultValue={this.props.data[this.state.data_index].salary}
+                  defaultValue={data[this.state.data_index].salary}
                 />
               </Form.Group>
 
